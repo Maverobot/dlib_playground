@@ -3,12 +3,28 @@
 
 cmake_minimum_required(VERSION 3.0)
 
+set(TESTING_CONFIG_OPT FILEPATH ${CMAKE_CURRENT_LIST_DIR}/config.cmake)
+
+if(NOT EXISTS "${CMAKE_BINARY_DIR}/HunterGate.cmake")
+  message(STATUS "Downloading HunterGate.cmake from https://raw.githubusercontent.com/hunter-packages/gate/master/cmake/HunterGate.cmake")
+  file(DOWNLOAD "https://raw.githubusercontent.com/hunter-packages/gate/master/cmake/HunterGate.cmake"
+                "${CMAKE_BINARY_DIR}/HunterGate.cmake")
+endif()
+include(${CMAKE_BINARY_DIR}/HunterGate.cmake)
+HunterGate(
+URL "https://github.com/cpp-pm/hunter/archive/v0.23.215.tar.gz"
+SHA1 "6969b8330f8db140196d567dd0c570f8789c3c4e"
+LOCAL
+)
+
 project(download-dlib)
+
+hunter_add_package(dlib)
 
 find_package(dlib CONFIG REQUIRED)
 
-add_executable(bayes_net_ex bayes_net_ex.cpp)
-target_link_libraries(bayes_net_ex PUBLIC dlib::dlib)
+add_executable(krls_ex krls_ex.cpp)
+target_link_libraries(krls_ex PUBLIC dlib::dlib)
 
-add_executable(chinese_whispers_ex chinese_whispers_ex.cpp)
-target_link_libraries(chinese_whispers_ex PUBLIC dlib::dlib)
+add_executable(gui_api_ex gui_api_ex.cpp)
+target_link_libraries(gui_api_ex PUBLIC dlib::dlib)
