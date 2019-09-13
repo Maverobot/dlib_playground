@@ -3,8 +3,6 @@
 
 cmake_minimum_required(VERSION 3.0)
 
-set(TESTING_CONFIG_OPT FILEPATH ${CMAKE_CURRENT_LIST_DIR}/config.cmake)
-
 if(NOT EXISTS "${CMAKE_BINARY_DIR}/HunterGate.cmake")
   message(STATUS "Downloading HunterGate.cmake from https://raw.githubusercontent.com/hunter-packages/gate/master/cmake/HunterGate.cmake")
   file(DOWNLOAD "https://raw.githubusercontent.com/hunter-packages/gate/master/cmake/HunterGate.cmake"
@@ -20,7 +18,6 @@ LOCAL
 project(download-dlib)
 
 hunter_add_package(dlib)
-
 find_package(dlib CONFIG REQUIRED)
 
 add_executable(krls_ex krls_ex.cpp)
