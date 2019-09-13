@@ -25,3 +25,6 @@ target_link_libraries(krls_ex PUBLIC dlib::dlib)
 
 add_executable(gui_api_ex gui_api_ex.cpp)
 target_link_libraries(gui_api_ex PUBLIC dlib::dlib)
+
+add_executable(dnn_introduction_ex src/dnn_introduction_ex.cpp)
+target_link_libraries(dnn_introduction_ex PUBLIC dlib::dlib)
